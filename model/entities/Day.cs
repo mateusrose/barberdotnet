@@ -15,6 +15,7 @@ namespace barberdotnet.model.entities
         public Month? Month { get; set; }
         public bool CanWork { get; set; }
         public List<BarberDay>? BarberDays { get; set; } = [];
+        public List<Timeslot>? Timeslots { get; set; } = [];
 
         public void setup(int i)
         {

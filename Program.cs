@@ -1,4 +1,4 @@
-using barberdotnet.model;
+using barberdotnet.model.persistence;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Writers; // Add this using directive
 
@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddControllers();
 
 
 builder.Services.AddDbContext<BarberContext>(options =>
@@ -22,8 +23,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+app.UseRouting();
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
+
 
 using (var scope =  app.Services.CreateScope())
 {
@@ -32,5 +35,6 @@ using (var scope =  app.Services.CreateScope())
     initializer.Initialize();
     
 }
-
+app.MapControllers();
+app.Run();
 

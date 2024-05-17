@@ -11,7 +11,7 @@ namespace barberdotnet.model.entities
         public int Id { get; set; }
         public string? Name { get; set; }
         public List<BarberDay>? BarberDays { get; set; } = [];
-       // public List<TimeSlot>? TimeSlots { get; set; } = [];
+        public List<Timeslot>? Timeslots { get; set; } = [];
 
     }
 }

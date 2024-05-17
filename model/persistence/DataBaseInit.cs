@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using barberdotnet.model.entities;
 using barberdotnet.model.tables;
 
-namespace barberdotnet.model
+namespace barberdotnet.model.persistence
 {
     public class DataBaseInit
     {
@@ -21,7 +21,7 @@ namespace barberdotnet.model
         {
             DBInit();
             AddBarbers(2);
-            AddYears(2);
+            AddYears(1);
 
             _context.SaveChanges();
         }
@@ -30,8 +30,10 @@ namespace barberdotnet.model
             _context.Database.EnsureDeleted();
             _context.Database.EnsureCreated();
         }
-        private void AddBarbers(int i){
-            for(int j = 0; j < i; j++){
+        private void AddBarbers(int i)
+        {
+            for (int j = 0; j < i; j++)
+            {
                 var barber = new Barber { Name = "Barber" + j };
                 Barbers.Add(barber);
                 _context.barbers.Add(barber);
@@ -40,7 +42,7 @@ namespace barberdotnet.model
 
         private void AddYears(int years)
         {
-            for(int i = 0; i < years; i++)
+            for (int i = 0; i < years; i++)
             {
                 var year = new Year();
                 AddMonths(year);
@@ -71,15 +73,33 @@ namespace barberdotnet.model
                 day.Month = month;
                 month.Days.Add(day);
                 AssignBarbers(day);
+                AssignTimeslots(day);
                 _context.days.Add(day);
             }
         }
-        private void AssignBarbers(Day day){
-            foreach(var barber in Barbers){
+        private void AssignBarbers(Day day)
+        {
+            foreach (var barber in Barbers)
+            {
                 var barberDay = new BarberDay { Barber = barber, Day = day };
                 day.BarberDays.Add(barberDay);
                 barber.BarberDays.Add(barberDay);
                 _context.barberDays.Add(barberDay);
+            }
+        }
+
+        private void AssignTimeslots(Day day)
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                foreach (var barber in Barbers)
+                {
+                    var timeslot = new Timeslot { Barber = barber, Day = day };
+                    timeslot.setup(i);
+                    day.Timeslots.Add(timeslot);
+                    barber.Timeslots.Add(timeslot);
+                    _context.timeslots.Add(timeslot);
+                }
             }
         }
     }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using barberdotnet.model.entities;
 using barberdotnet.model.tables;
 
-namespace barberdotnet.model
+namespace barberdotnet.model.persistence
 {
     public class BarberContext : DbContext
     {
@@ -18,6 +18,7 @@ namespace barberdotnet.model
     public DbSet<Day> days { get; set; }
     public DbSet<Barber> barbers { get; set; }
     public DbSet<BarberDay> barberDays { get; set; }
+    public DbSet<Timeslot> timeslots { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -34,6 +35,7 @@ namespace barberdotnet.model
             .HasOne(bd => bd.Day)
             .WithMany(d => d.BarberDays)
             .HasForeignKey(bd => bd.DayId);
+        
     }
     }
 }
