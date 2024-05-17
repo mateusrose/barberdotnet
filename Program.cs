@@ -1,6 +1,12 @@
 using barberdotnet.model.persistence;
+using barberdotnet.services; // Add this using directive
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Writers; // Add this using directive
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc;
+
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
+builder.Services.AddServices();
 
 
 builder.Services.AddDbContext<BarberContext>(options =>

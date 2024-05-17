@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using barberdotnet.model.entities;
 using barberdotnet.model.persistence;
+using barberdotnet.services;
 
 namespace barberdotnet.controllers
 {
@@ -13,21 +14,17 @@ namespace barberdotnet.controllers
     [ApiController]
     public class TimeslotController : ControllerBase
     {
-        private readonly BarberContext _context;
+        private readonly ITimeslotService _timeslotService;
 
-        public TimeslotController(BarberContext context)
+        public TimeslotController(ITimeslotService timeslotService)
         {
-            _context = context;
+            _timeslotService = timeslotService;
         }
+       
         [HttpGet("{id}")]
         public async Task<ActionResult<Timeslot>> GetTimeslot(int id)
         {
-            var timeslot = await _context.timeslots.FindAsync(id);
-
-            if (timeslot == null)
-            {
-                return NotFound();
-            }
+            var timeslot = await _timeslotService.GetById(id);
 
             return timeslot;
         }
