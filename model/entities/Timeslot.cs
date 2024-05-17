@@ -14,10 +14,15 @@ namespace barberdotnet.model.entities
         public Day? Day { get; set; }
         public string Client { get; set; } = "";
 
-        public void setup(double i)
+        public void setup(int i)
         {
-            this.Time = i;
-            this.Time = 10 + i / 2;
+            int baseTime = 1000;
+            int increment = i * 30;
+           
+            int hours = increment / 60;
+            int minutes = increment % 60;
+
+            this.Time = baseTime + hours * 100 + minutes;
         }
     }
 }

@@ -18,12 +18,11 @@ namespace barberdotnet.services
         private readonly TStoDTO _converter;
         private readonly TimeslotRepo _repository;
 
-        public TimeslotService(BarberContext context)
+        public TimeslotService(BarberContext context, TStoDTO converter, TimeslotRepo repository)
         {   
             _context = context;
-            _converter = new TStoDTO();
-            _repository = new TimeslotRepo(context);
-            
+            _converter = converter;
+            _repository = repository;
         }
 
         public async Task<ActionResult<TimeslotDTO>> GetById(int id)
@@ -35,6 +34,18 @@ namespace barberdotnet.services
             if (timeslot == null)
             {
                 throw new Exception($"Timeslot with id {id} not found");
+            }
+            return dto;
+        }
+        public async Task<ActionResult<TimeslotDTO>> GetByExactTime(int year, int month, int day, int hour)
+        {
+            var timeslot = await _repository.GetByExactTime(year, month, day, hour);
+
+            TimeslotDTO dto = _converter.ToDTO(timeslot);
+
+            if (timeslot == null)
+            {
+                throw new Exception($"Timeslot with year {year}, month {month}, day {day}, and hour {hour} not found");
             }
             return dto;
         }

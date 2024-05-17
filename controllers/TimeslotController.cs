@@ -29,5 +29,14 @@ namespace barberdotnet.controllers
 
             return timeslot;
         }
+
+        
+        [HttpGet("{year}/{month}/{day}/{hour}")]
+        public async Task<ActionResult<TimeslotDTO>> GetTimeslotByExactTime(int year, int month, int day, int hour)
+        {
+            var timeslot = await _timeslotService.GetByExactTime(year, month, day, hour);
+
+            return timeslot;
+        }
     }
 }

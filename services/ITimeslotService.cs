@@ -11,5 +11,6 @@ namespace barberdotnet.services
     public interface ITimeslotService
     {
         Task<ActionResult<TimeslotDTO>> GetById(int id);
+        Task<ActionResult<TimeslotDTO>> GetByExactTime(int year, int month, int day, int hour);
     }
 }
