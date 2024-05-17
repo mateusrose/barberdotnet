@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("barberdotnet")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9764333f4c75cf5a79be3041ba5d7cf2b3c91773")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8a67d870d6943d1f6909e7d4320cfc772035ef45")]
 [assembly: System.Reflection.AssemblyProductAttribute("barberdotnet")]
 [assembly: System.Reflection.AssemblyTitleAttribute("barberdotnet")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

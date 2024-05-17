@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using barberdotnet.model.entities;
 
-namespace barberdotnet.model.entities
+namespace barberdotnet.model.tables
 {
     public class BarberDay
     {

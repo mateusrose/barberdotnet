@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using barberdotnet.model.entities;
+using barberdotnet.model.tables;
 
 namespace barberdotnet.model
 {
