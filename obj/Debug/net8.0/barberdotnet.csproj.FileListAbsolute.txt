@@ -37,3 +37,11 @@
 /home/mateus/Documents/githubProjects/barberdotnet/barberdotnet/obj/Debug/net8.0/barberdotnet.genruntimeconfig.cache
 /home/mateus/Documents/githubProjects/barberdotnet/barberdotnet/obj/Debug/net8.0/ref/barberdotnet.dll
 /home/mateus/Documents/githubProjects/barberdotnet/barberdotnet/obj/Debug/net8.0/barberdotnet.sourcelink.json
+/home/mateus/Documents/githubProjects/barberdotnet/barberdotnet/bin/Debug/net8.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/home/mateus/Documents/githubProjects/barberdotnet/barberdotnet/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/home/mateus/Documents/githubProjects/barberdotnet/barberdotnet/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/mateus/Documents/githubProjects/barberdotnet/barberdotnet/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/home/mateus/Documents/githubProjects/barberdotnet/barberdotnet/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.dll
+/home/mateus/Documents/githubProjects/barberdotnet/barberdotnet/bin/Debug/net8.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/home/mateus/Documents/githubProjects/barberdotnet/barberdotnet/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+/home/mateus/Documents/githubProjects/barberdotnet/barberdotnet/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll
