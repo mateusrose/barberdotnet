@@ -14,5 +14,7 @@ namespace barberdotnet.model
      }
      public DbSet<Year> years { get; set; }
      public DbSet<Month> months { get; set; }
+      public DbSet<Day> days { get; set; }
     }
+   
 }

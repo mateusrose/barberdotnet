@@ -36,3 +36,4 @@
 /home/mateus/Documents/githubProjects/barberdotnet/barberdotnet/obj/Debug/net8.0/barberdotnet.pdb
 /home/mateus/Documents/githubProjects/barberdotnet/barberdotnet/obj/Debug/net8.0/barberdotnet.genruntimeconfig.cache
 /home/mateus/Documents/githubProjects/barberdotnet/barberdotnet/obj/Debug/net8.0/ref/barberdotnet.dll
+/home/mateus/Documents/githubProjects/barberdotnet/barberdotnet/obj/Debug/net8.0/barberdotnet.sourcelink.json

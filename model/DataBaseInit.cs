@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using barberdotnet.model.entities;
 
 namespace barberdotnet.model
 {
@@ -16,19 +17,52 @@ namespace barberdotnet.model
 
         public void Initialize()
         {
-            
-            _context.Database.EnsureDeleted();
-            _context.Database.EnsureCreated();
+            DBInit();
+            AddYears(2);
 
-            var year = new Year { };
-            var year2 = new Year { };
-            var year3 = new Year { };
-
-            _context.years.Add(year);
-            _context.years.Add(year2);
-            _context.years.Add(year3);
             _context.SaveChanges();
         }
-        
+        private void DBInit()
+        {
+            _context.Database.EnsureDeleted();
+            _context.Database.EnsureCreated();
+        }
+
+        private void AddYears(int years)
+        {
+            for(int i = 0; i < years; i++)
+            {
+                var year = new Year();
+                AddMonths(year);
+                _context.years.Add(year);
+            }
+            
+
+        }
+        private void AddMonths(Year year)
+        {
+            for (int i = 1; i <= 12; i++)
+            {
+                var month = new Month { MonthNumber = i, Year = year };
+                month.SetName(i);
+                year.Months.Add(month);
+                AddDays(month);
+                _context.months.Add(month);
+            }
+        }
+        private void AddDays(Month month)
+        {
+            int year = month.Year.YearNumber;
+            int monthNumber = (int)month.MonthNumber;
+            int daysInMonth = DateTime.DaysInMonth(year, monthNumber);
+
+            for (int i = 1; i <= daysInMonth; i++)
+            {
+                var day = new Day();
+                day.setup(i);
+                day.Month = month;
+                month.Days.Add(day);
+            }
+        }
     }
 }

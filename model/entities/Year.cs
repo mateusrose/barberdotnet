@@ -17,6 +17,7 @@ public class Year
     public Year()
     {
         YearNumber = MaxYear++;
+        Months = []; // Initialize Months property with an empty list
     }
 }
 }
