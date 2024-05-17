@@ -9,6 +9,7 @@ namespace barberdotnet.model
     public class DataBaseInit
     {
         private readonly BarberContext _context;
+        private List<Barber> Barbers = [];
 
         public DataBaseInit(BarberContext context)
         {
@@ -18,6 +19,7 @@ namespace barberdotnet.model
         public void Initialize()
         {
             DBInit();
+            AddBarbers(2);
             AddYears(2);
 
             _context.SaveChanges();
@@ -26,6 +28,13 @@ namespace barberdotnet.model
         {
             _context.Database.EnsureDeleted();
             _context.Database.EnsureCreated();
+        }
+        private void AddBarbers(int i){
+            for(int j = 0; j < i; j++){
+                var barber = new Barber { Name = "Barber" + j };
+                Barbers.Add(barber);
+                _context.barbers.Add(barber);
+            }
         }
 
         private void AddYears(int years)
@@ -36,8 +45,6 @@ namespace barberdotnet.model
                 AddMonths(year);
                 _context.years.Add(year);
             }
-            
-
         }
         private void AddMonths(Year year)
         {
@@ -62,6 +69,16 @@ namespace barberdotnet.model
                 day.setup(i);
                 day.Month = month;
                 month.Days.Add(day);
+                AssignBarbers(day);
+                _context.days.Add(day);
+            }
+        }
+        private void AssignBarbers(Day day){
+            foreach(var barber in Barbers){
+                var barberDay = new BarberDay { Barber = barber, Day = day };
+                day.BarberDays.Add(barberDay);
+                barber.BarberDays.Add(barberDay);
+                _context.barberDays.Add(barberDay);
             }
         }
     }

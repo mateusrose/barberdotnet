@@ -12,12 +12,12 @@ public class Year
     public int YearNumber { get; set; }
 
     private static int MaxYear = 2024;
-    public List<Month> Months { get; set; }
+    public List<Month> Months { get; set; } = [];
 
     public Year()
     {
         YearNumber = MaxYear++;
-        Months = []; // Initialize Months property with an empty list
+        
     }
 }
 }

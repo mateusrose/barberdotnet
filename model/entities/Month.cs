@@ -11,12 +11,8 @@ namespace barberdotnet.model.entities
         public int? MonthNumber { get; set; }
         public string? MonthName { get; set; }
         public Year? Year { get; set; }
-        public List<Day>? Days { get; set; }
+        public List<Day>? Days { get; set; } = [];
 
-        public Month()
-        {
-            Days = []; // Initialize Days property with an empty list   
-        }
     
 
         public void SetName(int i)
