@@ -24,7 +24,7 @@ namespace barberdotnet.repository
             .Include(t => t.Barber)
             .FirstOrDefaultAsync(t => t.Id == id);
         }
-        public async Task<Timeslot> GetByExactTime(int year, int month, int day, int time)
+        public async Task<Timeslot> GetByExactTime(int year, int month, int day, int time, int barber)
         {
             return await _context.timeslots
             .Include(t => t.Day)
@@ -34,6 +34,7 @@ namespace barberdotnet.repository
             .FirstOrDefaultAsync(t => t.Day.Month.Year.YearNumber == year &&
                                     t.Day.Month.MonthNumber == month &&
                                     t.Day.MonthDay == day &&
+                                    t.Barber.Id == barber &&
                                     t.Time == time);
         }
     }

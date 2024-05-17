@@ -19,9 +19,10 @@ public static class ServiceCollectionExtensions
             services.AddScoped(serviceType, serviceImplementationType);
             services.AddScoped<TStoDTO>();
             services.AddScoped<TimeslotRepo>();
+            services.AddScoped<TSReservation>();
         }
 
-        // Repeat for other services
+       
 
         return services;
     }

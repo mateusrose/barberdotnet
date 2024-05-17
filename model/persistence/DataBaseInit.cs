@@ -34,7 +34,7 @@ namespace barberdotnet.model.persistence
         {
             for (int j = 0; j < i; j++)
             {
-                var barber = new Barber { Name = "Barber" + j };
+                var barber = new Barber { Name = "Barber" + ((int)j+1) };
                 Barbers.Add(barber);
                 _context.barbers.Add(barber);
             }

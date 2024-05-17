@@ -30,11 +30,18 @@ namespace barberdotnet.controllers
             return timeslot;
         }
 
-        
-        [HttpGet("{year}/{month}/{day}/{hour}")]
-        public async Task<ActionResult<TimeslotDTO>> GetTimeslotByExactTime(int year, int month, int day, int hour)
+
+        [HttpGet("{year}/{month}/{day}/{hour}/{barber}")]
+        public async Task<ActionResult<TimeslotDTO>> GetTimeslotByExactTime(int year, int month, int day, int hour, int barber)
         {
-            var timeslot = await _timeslotService.GetByExactTime(year, month, day, hour);
+            var timeslot = await _timeslotService.GetByExactTime(year, month, day, hour, barber);
+
+            return timeslot;
+        }
+        [HttpPut("{year}/{month}/{day}/{hour}/{barber}/{client}")]
+        public async Task<ActionResult<TimeslotDTO>> SetReservation(int year, int month, int day, int hour, int barber, string client)
+        {
+            var timeslot = await _timeslotService.SetReservation(year, month, day, hour, barber, client);
 
             return timeslot;
         }
