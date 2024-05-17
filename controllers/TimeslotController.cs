@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace barberdotnet.controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     
@@ -25,7 +26,6 @@ namespace barberdotnet.controllers
         }
        
         [HttpGet("{id}")]
-        [Authorize]
         public async Task<ActionResult<TimeslotDTO>> GetTimeslot(int id)
         {
             var timeslot = await _timeslotService.GetById(id);
@@ -35,17 +35,25 @@ namespace barberdotnet.controllers
 
 
         [HttpGet("{year}/{month}/{day}/{hour}/{barber}")]
-        [Authorize]
         public async Task<ActionResult<TimeslotDTO>> GetTimeslotByExactTime(int year, int month, int day, int hour, int barber)
         {
             var timeslot = await _timeslotService.GetByExactTime(year, month, day, hour, barber);
 
             return timeslot;
         }
+
         [HttpPut("{year}/{month}/{day}/{hour}/{barber}/{client}")]
-        [Authorize]
         public async Task<ActionResult<TimeslotDTO>> SetReservation(int year, int month, int day, int hour, int barber, string client)
         {
+            var timeslot = await _timeslotService.SetReservation(year, month, day, hour, barber, client);
+
+            return timeslot;
+        }
+        
+         [HttpPut("{year}/{month}/{day}/{hour}/{barber}")]
+        public async Task<ActionResult<TimeslotDTO>> SetReset(int year, int month, int day, int hour, int barber)
+        {
+            string client = "";
             var timeslot = await _timeslotService.SetReservation(year, month, day, hour, barber, client);
 
             return timeslot;

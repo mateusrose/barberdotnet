@@ -9,11 +9,19 @@ namespace barberdotnet.model.converter
 {
     public class TSReservation
     {
-         public Timeslot ToReservation(Timeslot timeslot, string client)
+        public Timeslot ToReservation(Timeslot timeslot, string client)
         {
-                timeslot.IsAvailable = false;
+            if (!string.IsNullOrEmpty(client))
+            {
                 timeslot.Client = client;
-                
+                timeslot.IsAvailable = false;
+            }
+            else
+            {
+                timeslot.Client = "";
+                timeslot.IsAvailable = true;
+            }
+
             return timeslot;
         }
     }
