@@ -4,11 +4,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using barberdotnet.model.entities;
 using Microsoft.AspNetCore.Mvc;
+using barberdotnet.model.DTOs;
 
 namespace barberdotnet.services
 {
     public interface ITimeslotService
     {
-        Task<ActionResult<Timeslot>> GetById(int id);
+        Task<ActionResult<TimeslotDTO>> GetById(int id);
     }
 }

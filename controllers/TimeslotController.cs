@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using barberdotnet.model.entities;
 using barberdotnet.model.persistence;
 using barberdotnet.services;
+using barberdotnet.model.DTOs;
 
 namespace barberdotnet.controllers
 {
@@ -22,7 +23,7 @@ namespace barberdotnet.controllers
         }
        
         [HttpGet("{id}")]
-        public async Task<ActionResult<Timeslot>> GetTimeslot(int id)
+        public async Task<ActionResult<TimeslotDTO>> GetTimeslot(int id)
         {
             var timeslot = await _timeslotService.GetById(id);
 
