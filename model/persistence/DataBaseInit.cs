@@ -19,9 +19,9 @@ namespace barberdotnet.model.persistence
 
         public void Initialize()
         {
-            DBInit();
-            AddBarbers(2);
-            AddYears(1);
+           // DBInit();
+            //AddBarbers(2);
+            //AddYears(1);
 
             _context.SaveChanges();
         }
