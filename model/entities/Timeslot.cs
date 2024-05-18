@@ -13,6 +13,7 @@ namespace barberdotnet.model.entities
         public Barber? Barber { get; set; }
         public Day? Day { get; set; }
         public string Client { get; set; } = "";
+    
 
         public void setup(int i)
         {
