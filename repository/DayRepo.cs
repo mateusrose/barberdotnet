@@ -26,6 +26,17 @@ namespace barberdotnet.repository
 
             return day;
         }
+        public async Task<Day> GetByExactDay(int year, int month, int day)
+        {
+            var dayObj = await _context.days
+            .Include(d => d.Month)
+                .ThenInclude(m => m.Year)
+            .Include(d => d.Timeslots)
+            .FirstOrDefaultAsync(d => d.Month.Year.YearNumber == year &&
+                                    d.Month.MonthNumber == month &&
+                                    d.MonthDay == day);
 
+            return dayObj;
+        }
     }
 }

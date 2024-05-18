@@ -13,9 +13,11 @@ namespace barberdotnet.repository
     public class TimeslotRepo
     {
         private readonly BarberContext _context;
-        public TimeslotRepo(BarberContext context)
+        private readonly DayRepo _dayRepo;
+        public TimeslotRepo(BarberContext context, DayRepo dayRepo)
         {
             _context = context;
+            _dayRepo = dayRepo;
         }
         public async Task<Timeslot> GetById(int id)
         {
@@ -42,6 +44,20 @@ namespace barberdotnet.repository
                                     t.Time == time);
 
             return timeslot;
+        }
+        public async Task<List<Timeslot>> GetTimeslotsByDay(int year, int month, int day)
+        {
+            var dayObj = await _dayRepo.GetByExactDay(year, month, day);
+            
+            var timeslots = await _context.timeslots
+            .Include(t => t.Day)
+                .ThenInclude(d => d.Month)
+                    .ThenInclude(m => m.Year)
+            .Include(t => t.Barber)
+            .Where(t => t.Day.Id == dayObj.Id)
+            .ToListAsync();
+
+            return timeslots;
         }
     }
 }

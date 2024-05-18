@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace barberdotnet.model.DTOs
 {
-    public class TimeslotDTOshort
+    public class TimeslotDTOshort: ITimeslotDTO
     {
         
     }

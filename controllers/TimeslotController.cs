@@ -58,5 +58,12 @@ namespace barberdotnet.controllers
 
             return timeslot;
         }
+        [HttpGet("{year}/{month}/{day}")]
+        public async Task<ActionResult<List<Timeslot>>> GetTimeslotsByDay(int year, int month, int day)
+        {
+            var timeslots = await _timeslotService.GetTimeslotsByDay(year, month, day);
+
+            return timeslots;
+        }
     }
 }

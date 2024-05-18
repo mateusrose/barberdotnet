@@ -13,5 +13,7 @@ namespace barberdotnet.services
         Task<ActionResult<TimeslotDTO>> GetById(int id);
         Task<ActionResult<TimeslotDTO>> GetByExactTime(int year, int month, int day, int hour, int barber);
         Task<ActionResult<TimeslotDTO>> SetReservation(int year, int month, int day, int hour, int barber, string client);
+        Task<ActionResult<TimeslotDTO>> SetReset(int year, int month, int day, int hour, int barber);
+        Task<ActionResult<List<Timeslot>>> GetTimeslotsByDay(int year, int month, int day);
     }
 }

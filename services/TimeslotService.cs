@@ -74,5 +74,17 @@ namespace barberdotnet.services
 
             return _converter.ToDTO(timeslot);
         }
+
+        public Task<ActionResult<TimeslotDTO>> SetReset(int year, int month, int day, int hour, int barber)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<ActionResult<List<Timeslot>>> GetTimeslotsByDay(int year, int month, int day)
+        {
+            var timeslots = await _repository.GetTimeslotsByDay(year, month, day);
+            
+            return timeslots;
+        }
     }
 }
