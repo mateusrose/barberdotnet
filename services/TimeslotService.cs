@@ -18,13 +18,14 @@ namespace barberdotnet.services
         private readonly TStoDTO _converter;
         private readonly TimeslotRepo _repository;
         private readonly TSReservation _tsConverter;
-        public TimeslotService(BarberContext context, TStoDTO converter, TimeslotRepo repository, TSReservation tsConverter)
+        private readonly TSListToDTO _listConverter;
+        public TimeslotService(BarberContext context, TStoDTO converter, TimeslotRepo repository, TSReservation tsConverter, TSListToDTO listConverter)
         {
-            //remove context
-            _tsConverter = tsConverter;
             _context = context;
             _converter = converter;
             _repository = repository;
+            _tsConverter = tsConverter;
+            _listConverter = listConverter;
         }
 
         public async Task<ActionResult<TimeslotDTO>> GetById(int id)
@@ -80,11 +81,13 @@ namespace barberdotnet.services
             throw new NotImplementedException();
         }
 
-        public async Task<ActionResult<List<Timeslot>>> GetTimeslotsByDay(int year, int month, int day)
+        public async Task<ActionResult<List<TimeslotDTOshort>>> GetTimeslotsByDay(int year, int month, int day, int barber)
         {
-            var timeslots = await _repository.GetTimeslotsByDay(year, month, day);
+            ActionResult<List<Timeslot>> timeslots = await _repository.GetTimeslotsByDay(year, month, day);
+            var timeslots2 = timeslots.Value;
+            var task = _listConverter.ToDTO(timeslots2,barber);
             
-            return timeslots;
+            return task;
         }
     }
 }

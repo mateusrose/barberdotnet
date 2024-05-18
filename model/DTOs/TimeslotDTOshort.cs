@@ -7,6 +7,8 @@ namespace barberdotnet.model.DTOs
 {
     public class TimeslotDTOshort: ITimeslotDTO
     {
-        
+        public int hour { get; set; }
+        public bool isAvailable { get; set; }
+        public string client { get; set; }
     }
 }

@@ -24,7 +24,9 @@ public static class ServiceCollectionExtensions
             services.AddScoped<TSReservation>();
             services.AddScoped<DayRepo>();
             services.AddScoped(dayService, dayServiceImplementation);
-            
+            services.AddScoped<TSshortToDTO>();
+            services.AddScoped<TSListToDTO>();
+
         }
 
        
