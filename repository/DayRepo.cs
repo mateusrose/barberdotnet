@@ -38,5 +38,6 @@ namespace barberdotnet.repository
 
             return dayObj;
         }
+      
     }
 }

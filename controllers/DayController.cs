@@ -29,13 +29,13 @@ namespace barberdotnet.controllers
 
             return day;
         }
-/*
-        [HttpGet("{year}/{month}/{day}/{barber}")]
-        public async Task<ActionResult<Day>> GetDayByDate(int year, int month, int day, string barber)
-        {
-            var day = await _dayService.GetByDate(year, month, day, barber);
 
-            return day;
-        }*/
+        [HttpGet("{year}/{month}/{day}")]
+        public async Task<ActionResult<List<BarberDTO>>> GetDayByDate(int year, int month, int day)
+        {
+            var barberList = await _dayService.GetByDate(year, month, day);
+
+            return barberList;
+        }
     }
 }

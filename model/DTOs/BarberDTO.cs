@@ -10,6 +10,6 @@ namespace barberdotnet.model.DTOs
     {
         public int Id { get; set; }
         public string Name { get; set; }
-         public List<ITimeslotDTO> Timeslots { get; set; } = [];
+         public List<TimeslotDTOshort> Timeslots { get; set; } = [];
     }
 }

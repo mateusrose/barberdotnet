@@ -11,5 +11,6 @@ namespace barberdotnet.services
     public interface IDayService
     {
         Task<Day> GetById(int id);
+        Task<List<BarberDTO>> GetByDate(int year, int month, int day);
     }
 }

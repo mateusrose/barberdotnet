@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using barberdotnet.repository;
 using barberdotnet.model.converter;
+using barberdotnet.model.entities;
 
 namespace barberdotnet.services
 {
@@ -26,6 +27,7 @@ public static class ServiceCollectionExtensions
             services.AddScoped(dayService, dayServiceImplementation);
             services.AddScoped<TSshortToDTO>();
             services.AddScoped<TSListToDTO>();
+            services.AddScoped<BarberRepo>();
 
         }
 

@@ -83,10 +83,8 @@ namespace barberdotnet.services
 
         public async Task<ActionResult<List<TimeslotDTOshort>>> GetTimeslotsByDay(int year, int month, int day, int barber)
         {
-            ActionResult<List<Timeslot>> timeslots = await _repository.GetTimeslotsByDay(year, month, day);
-            var timeslots2 = timeslots.Value;
-            var task = _listConverter.ToDTO(timeslots2,barber);
-            
+            ActionResult<List<Timeslot>> timeslots = await _repository.GetTimeslotsByDayBarber(year, month, day,barber);
+            var task = _listConverter.ToDTO(timeslots.Value);
             return task;
         }
     }

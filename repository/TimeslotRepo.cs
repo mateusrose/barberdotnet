@@ -45,16 +45,17 @@ namespace barberdotnet.repository
 
             return timeslot;
         }
-        public async Task<List<Timeslot>> GetTimeslotsByDay(int year, int month, int day)
+        public async Task<List<Timeslot>> GetTimeslotsByDayBarber(int year, int month, int day, int barber)
         {
             var dayObj = await _dayRepo.GetByExactDay(year, month, day);
-            
+
             var timeslots = await _context.timeslots
             .Include(t => t.Day)
                 .ThenInclude(d => d.Month)
                     .ThenInclude(m => m.Year)
             .Include(t => t.Barber)
             .Where(t => t.Day.Id == dayObj.Id)
+            .Where(t => t.Barber.Id == barber)
             .ToListAsync();
 
             return timeslots;
