@@ -13,7 +13,7 @@ namespace barberdotnet.model.entities
         public string? WeekDayName { get; set; }
         public int? MonthDay { get; set; }
         public Month? Month { get; set; }
-        public bool CanWork { get; set; }
+        public bool CanWork { get; set; } = true;
         public List<BarberDay>? BarberDays { get; set; } = [];
         public List<Timeslot>? Timeslots { get; set; } = [];
 

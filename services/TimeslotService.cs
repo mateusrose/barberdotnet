@@ -20,6 +20,7 @@ namespace barberdotnet.services
         private readonly TSReservation _tsConverter;
         public TimeslotService(BarberContext context, TStoDTO converter, TimeslotRepo repository, TSReservation tsConverter)
         {
+            //remove context
             _tsConverter = tsConverter;
             _context = context;
             _converter = converter;

@@ -13,6 +13,8 @@ public static class ServiceCollectionExtensions
     {
         var serviceType = typeof(ITimeslotService);
         var serviceImplementationType = typeof(TimeslotService);
+        var dayService = typeof(IDayService);
+        var dayServiceImplementation = typeof(DayService);
 
         if (serviceType.IsAssignableFrom(serviceImplementationType))
         {
@@ -20,6 +22,9 @@ public static class ServiceCollectionExtensions
             services.AddScoped<TStoDTO>();
             services.AddScoped<TimeslotRepo>();
             services.AddScoped<TSReservation>();
+            services.AddScoped<DayRepo>();
+            services.AddScoped(dayService, dayServiceImplementation);
+            
         }
 
        

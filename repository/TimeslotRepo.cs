@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using barberdotnet.model.entities;
 using Microsoft.EntityFrameworkCore;
 using barberdotnet.model.persistence;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace barberdotnet.repository
 {
@@ -17,16 +19,18 @@ namespace barberdotnet.repository
         }
         public async Task<Timeslot> GetById(int id)
         {
-            return await _context.timeslots
+            var timeslot = await _context.timeslots
             .Include(t => t.Day)
                 .ThenInclude(d => d.Month)
                     .ThenInclude(m => m.Year)
             .Include(t => t.Barber)
             .FirstOrDefaultAsync(t => t.Id == id);
+
+            return timeslot;
         }
         public async Task<Timeslot> GetByExactTime(int year, int month, int day, int time, int barber)
         {
-            return await _context.timeslots
+            var timeslot = await _context.timeslots
             .Include(t => t.Day)
                 .ThenInclude(d => d.Month)
                     .ThenInclude(m => m.Year)
@@ -36,6 +40,8 @@ namespace barberdotnet.repository
                                     t.Day.MonthDay == day &&
                                     t.Barber.Id == barber &&
                                     t.Time == time);
+
+            return timeslot;
         }
     }
 }
