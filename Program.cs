@@ -24,6 +24,7 @@ builder.Services.AddDbContext<BarberContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddDbContext<AuthContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+    
 builder.Services.AddIdentityCore<MyUser>()
     .AddEntityFrameworkStores<AuthContext>()
     .AddApiEndpoints();

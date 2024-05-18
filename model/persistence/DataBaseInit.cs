@@ -22,6 +22,8 @@ namespace barberdotnet.model.persistence
            // DBInit();
             //AddBarbers(2);
             //AddYears(1);
+            // dotnet ef migrations add InitialCreate --context AuthContext
+            // dotnet ef database update --context AuthContext
 
             _context.SaveChanges();
         }
