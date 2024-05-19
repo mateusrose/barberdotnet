@@ -12,6 +12,7 @@ using System.Text;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity; // Add this using directive
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using barberdotnet.controllers.middleware;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -56,13 +57,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-app.MapIdentityApi<MyUser>();
 
+app.UseMiddleware<BlockRegisterMiddleware>();
 app.UseRouting();
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.MapIdentityApi<MyUser>();
 using (var scope =  app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<BarberContext>();
