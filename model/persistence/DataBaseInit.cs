@@ -7,6 +7,7 @@ using barberdotnet.model.tables;
 
 namespace barberdotnet.model.persistence
 {
+    //This is where the database is populated if needed
     public class DataBaseInit
     {
         private readonly BarberContext _context;

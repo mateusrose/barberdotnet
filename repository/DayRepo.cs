@@ -16,6 +16,7 @@ namespace barberdotnet.repository
         {
             _context = context;
         }
+        //Comment out the following code
         public async Task<Day> GetById(int id)
         {
             var day = await _context.days
@@ -26,6 +27,7 @@ namespace barberdotnet.repository
 
             return day;
         }
+        //GET Day by Exact Date
         public async Task<Day> GetByExactDay(int year, int month, int day)
         {
             var dayObj = await _context.days

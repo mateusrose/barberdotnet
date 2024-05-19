@@ -19,6 +19,7 @@ namespace barberdotnet.repository
             _context = context;
             _dayRepo = dayRepo;
         }
+        // comment out the following code
         public async Task<Timeslot> GetById(int id)
         {
             var timeslot = await _context.timeslots
@@ -30,6 +31,7 @@ namespace barberdotnet.repository
 
             return timeslot;
         }
+        //GET Task by Exact Time and Barber
         public async Task<Timeslot> GetByExactTime(int year, int month, int day, int time, int barber)
         {
             var timeslot = await _context.timeslots
@@ -45,6 +47,7 @@ namespace barberdotnet.repository
 
             return timeslot;
         }
+        //GET List of Timeslots by Day and Barber
         public async Task<List<Timeslot>> GetTimeslotsByDayBarber(int year, int month, int day, int barber)
         {
             var dayObj = await _dayRepo.GetByExactDay(year, month, day);

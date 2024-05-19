@@ -13,7 +13,7 @@ namespace barberdotnet.controllers
 public class MyIdentityController : ControllerBase
 {
     [HttpPost("register")]
-    public IActionResult Register()
+    public IActionResult Register([FromBody] Day day)
     {
         // User registration is currently disabled.
         return BadRequest(new { message = "User registration is currently disabled." });

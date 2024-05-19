@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace barberdotnet.model.DTOs
 {
+    //regular timeslotDTO
     public class TimeslotDTO
     {
         public int Hour { get; set; }

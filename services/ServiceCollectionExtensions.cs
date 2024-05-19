@@ -10,6 +10,7 @@ namespace barberdotnet.services
 {
 public static class ServiceCollectionExtensions
 {
+    // Its intended use is for removing boilderplate on Program.cs by adding services in one line
     public static IServiceCollection AddServices(this IServiceCollection services)
     {
         var serviceType = typeof(ITimeslotService);

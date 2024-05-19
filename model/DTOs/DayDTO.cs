@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 namespace barberdotnet.model.DTOs
 {
+    
     public class DayDTO
     {
         public List<BarberDTO> Barber { get; set; } = [];

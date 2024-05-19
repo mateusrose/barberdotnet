@@ -6,6 +6,7 @@ using barberdotnet.model.entities;
 
 namespace barberdotnet.model
 {
+    
 public class Year
 {
     public int Id { get; set; }

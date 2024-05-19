@@ -18,16 +18,22 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddSwaggerGen(c=>
 {
-    c.ResolveConflictingActions(apiDescriptions => apiDescriptions.Last());
+    c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
 });
 
 builder.Services.AddDbContext<BarberContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddDbContext<AuthContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
-    
+    builder.Services.AddControllers().AddJsonOptions(options =>
+{
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+  
+
+});
 builder.Services.AddIdentityCore<MyUser>()
     .AddEntityFrameworkStores<AuthContext>()
     .AddApiEndpoints();
@@ -38,12 +44,7 @@ builder.Services.AddServices();
 builder.Services.AddAuthentication(IdentityConstants.BearerScheme).AddBearerToken(IdentityConstants.BearerScheme);
 builder.Services.AddAuthorization();
 
-builder.Services.AddControllers().AddJsonOptions(options =>
-{
-    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-  
 
-});
 
 
 var app = builder.Build();
@@ -61,10 +62,6 @@ app.UseRouting();
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
-
-
-
-
 
 using (var scope =  app.Services.CreateScope())
 {

@@ -6,6 +6,7 @@ using barberdotnet.model.entities;
 
 namespace barberdotnet.model.tables
 {
+    //Join Table for Barber and Day
     public class BarberDay
     {
         public int BarberId { get; set; }

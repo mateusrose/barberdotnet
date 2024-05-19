@@ -27,6 +27,7 @@ namespace barberdotnet.services
             _listConverter = listConverter;
         }
         
+        //GET List of All BarbersDTO that contains Timeslots for the current day
         public async Task<List<BarberDTO>> GetByDate(int year, int month, int day)
         {
             var BarberDTOList = new List<BarberDTO>();
@@ -56,7 +57,8 @@ namespace barberdotnet.services
                 _logger.LogInformation($"BarberDTOList: {string.Join(", ", BarberDTOList[0].Timeslots[0])}");
             }
             return BarberDTOList;
-        }        public Task<Day> GetById(int id)
+        }   
+            public Task<Day> GetById(int id)
         {
             throw new NotImplementedException();
         }

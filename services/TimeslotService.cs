@@ -28,6 +28,7 @@ namespace barberdotnet.services
             _listConverter = listConverter;
         }
 
+        //Comment out the following code
         public async Task<ActionResult<TimeslotDTO>> GetById(int id)
         {
             var timeslot = await _repository.GetById(id);
@@ -40,6 +41,7 @@ namespace barberdotnet.services
             }
             return dto;
         }
+        //GET Task by Exact Time and Barber and return its DTO
         public async Task<ActionResult<TimeslotDTO>> GetByExactTime(int year, int month, int day, int hour, int barber)
         {
             var timeslot = await _repository.GetByExactTime(year, month, day, hour, barber);
@@ -75,12 +77,12 @@ namespace barberdotnet.services
 
             return _converter.ToDTO(timeslot);
         }
-
+        //Obsolete because SetReservation is used instead
         public Task<ActionResult<TimeslotDTO>> SetReset(int year, int month, int day, int hour, int barber)
         {
             throw new NotImplementedException();
         }
-
+        //GET List of Timeslots by Day and Barber and return its DTO
         public async Task<ActionResult<List<TimeslotDTOshort>>> GetTimeslotsByDay(int year, int month, int day, int barber)
         {
             ActionResult<List<Timeslot>> timeslots = await _repository.GetTimeslotsByDayBarber(year, month, day,barber);

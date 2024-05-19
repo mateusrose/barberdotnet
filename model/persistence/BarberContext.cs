@@ -20,7 +20,7 @@ namespace barberdotnet.model.persistence
     public DbSet<BarberDay> barberDays { get; set; }
     public DbSet<Timeslot> timeslots { get; set; }
 
-
+    //Defining not automatically generated relations
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<BarberDay>()

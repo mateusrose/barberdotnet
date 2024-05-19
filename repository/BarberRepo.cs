@@ -14,6 +14,7 @@ namespace barberdotnet.repository
         {
             _context = context;
         }
+        //GET List of All Barbers
         public Task<List<Barber>> GetBarbers()
         {
             return Task.FromResult(_context.barbers.ToList());
