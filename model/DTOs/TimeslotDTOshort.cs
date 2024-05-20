@@ -11,5 +11,6 @@ namespace barberdotnet.model.DTOs
         public int hour { get; set; }
         public bool isAvailable { get; set; }
         public string client { get; set; }
+        public bool IsWorkHour { get; set; }
     }
 }

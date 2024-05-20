@@ -18,14 +18,16 @@ namespace barberdotnet.model.converter
         public List<TimeslotDTOshort> ToDTO(List<Timeslot> timeslots)
         {
             List<TimeslotDTOshort> timeslotDTOshorts = new List<TimeslotDTOshort>();
+            
+            timeslotDTOshorts  = timeslots.Select(_tsShortToDTO.ToDTO).ToList();
 
-            foreach (Timeslot timeslot in timeslots)
+            /*foreach (Timeslot timeslot in timeslots)
             {
-                TimeslotDTOshort timeslotDTOshort = new TimeslotDTOshort();
-                timeslotDTOshort = _tsShortToDTO.ToDTO(timeslot);
+                TimeslotDTOshort TimeslotDTOshort = new TimeslotDTOshort();
+                TimeslotDTOshort = _tsShortToDTO.ToDTO(timeslot);
 
-                timeslotDTOshorts.Add(timeslotDTOshort);
-            }
+                timeslotDTOshorts.Add(TimeslotDTOshort);
+            }*/
             return timeslotDTOshorts;
         }
     }

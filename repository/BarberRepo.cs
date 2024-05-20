@@ -19,5 +19,7 @@ namespace barberdotnet.repository
         {
             return Task.FromResult(_context.barbers.ToList());
         }
+
+       
     }
 }

@@ -20,6 +20,7 @@ namespace barberdotnet.model.converter
             {
                 timeslot.Client = "";
                 timeslot.IsAvailable = true;
+                
             }
 
             return timeslot;

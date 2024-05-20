@@ -12,9 +12,12 @@ namespace barberdotnet.model.converter
         public TimeslotDTOshort ToDTO(Timeslot timeslot)
         {
             TimeslotDTOshort timeslotDTOshort = new TimeslotDTOshort();
+         
+
             timeslotDTOshort.hour = (int) timeslot.Time;
             timeslotDTOshort.isAvailable = timeslot.IsAvailable;
             timeslotDTOshort.client = timeslot.Client;
+            timeslotDTOshort.IsWorkHour = timeslot.IsWorkHour;
             return timeslotDTOshort;
         }
     }

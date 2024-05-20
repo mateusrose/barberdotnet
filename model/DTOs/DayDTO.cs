@@ -13,5 +13,6 @@ namespace barberdotnet.model.DTOs
         public int Month { get; set; }
         public string MonthName { get; set; }
         public int Year { get; set; }
+        
     }
 }

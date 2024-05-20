@@ -20,7 +20,8 @@ namespace barberdotnet.model.converter
                 MonthName = timeslot.Day.Month.MonthName,
                 Year = timeslot.Day.Month.Year.Id,
                 Barber = timeslot.Barber.Name,
-                Client = timeslot.Client
+                Client = timeslot.Client,
+                IsWorkHour = timeslot.IsWorkHour
             };
             return dto;
         }

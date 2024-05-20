@@ -17,5 +17,6 @@ namespace barberdotnet.model.DTOs
         public int Year { get; set; }
         public string Barber { get; set; }
         public string Client { get; set;}
+        public bool IsWorkHour { get; set; }
     }
 }

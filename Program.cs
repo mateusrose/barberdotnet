@@ -79,7 +79,5 @@ app.Run();
 class MyUser : IdentityUser{}
 class AuthContext : IdentityDbContext<MyUser>
 {
-    public AuthContext(DbContextOptions<AuthContext> options) : base(options)
-    {
-    }
+    public AuthContext(DbContextOptions<AuthContext> options) : base(options) {}
 }

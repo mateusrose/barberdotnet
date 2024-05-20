@@ -14,6 +14,7 @@ public class Year
 
     private static int MaxYear = 2024;
     public List<Month> Months { get; set; } = [];
+    
 
     public Year()
     {

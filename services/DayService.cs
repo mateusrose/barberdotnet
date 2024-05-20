@@ -8,7 +8,7 @@ using barberdotnet.model.entities;
 using barberdotnet.repository;
 using Microsoft.AspNetCore.Mvc;
 
-
+// A service class responsible for mana
 namespace barberdotnet.services
 {
     public class DayService : IDayService
@@ -18,6 +18,7 @@ namespace barberdotnet.services
         private readonly BarberRepo _barberRepo;
         private readonly TSListToDTO _listConverter;
         private readonly ILogger<DayService> _logger;
+        
         public DayService(ILogger<DayService> logger ,DayRepo dayRepo, TimeslotRepo timeslotRepo, BarberRepo barberRepo, TSListToDTO listConverter)
         {
             _logger = logger;
@@ -48,7 +49,6 @@ namespace barberdotnet.services
                 for(int j = 0; j < list.Count; j++)
                 {
                     TimeslotDTOshort ts = list[j];
-                    TimeslotDTOshort ts2 = new TimeslotDTOshort();
                     dto.Timeslots.Add(ts);
                     
                     //dto.Timeslots.Add((TimeslotDTOshort)list[j]);

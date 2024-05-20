@@ -23,7 +23,7 @@ namespace barberdotnet.model.persistence
            // DBInit();
             //AddBarbers(2);
             //AddYears(1);
-            // dotnet ef migrations add InitialCreate --context AuthContext
+            //in case of delete migration dotnet ef migrations add InitialCreate --context AuthContext
             // dotnet ef database update --context AuthContext
 
             _context.SaveChanges();
@@ -93,7 +93,7 @@ namespace barberdotnet.model.persistence
 
         private void AssignTimeslots(Day day)
         {
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 27; i++)
             {
                 foreach (var barber in Barbers)
                 {

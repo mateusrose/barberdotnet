@@ -21,19 +21,13 @@ namespace barberdotnet.controllers.middleware
             if (context.Request.Path.StartsWithSegments("/register", StringComparison.OrdinalIgnoreCase))
             {
                 context.Response.StatusCode = StatusCodes.Status404NotFound;
-                await context.Response.WriteAsync("Register endpoint is disabled.");
+                await context.Response.WriteAsync("Barber is full.");
                 return;
             }
 
             await _next(context);
         }
     }
-    public static class BlockRegisterMiddlewareExtensions
-    {
-        public static IApplicationBuilder UseBlockRegisterMiddleware(this IApplicationBuilder builder)
-        {
-            return builder.UseMiddleware<BlockRegisterMiddleware>();
-        }
-    }
+    
 
 }
