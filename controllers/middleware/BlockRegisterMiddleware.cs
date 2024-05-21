@@ -20,7 +20,7 @@ namespace barberdotnet.controllers.middleware
         {
             if (context.Request.Path.StartsWithSegments("/register", StringComparison.OrdinalIgnoreCase))
             {
-                context.Response.StatusCode = StatusCodes.Status404NotFound;
+                context.Response.StatusCode = StatusCodes.Status403Forbidden;
                 await context.Response.WriteAsync("Barber is full.");
                 return;
             }
