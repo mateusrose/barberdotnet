@@ -38,8 +38,12 @@ ASP.NET Core Middleware
 ASP.NET Identity
 
 #Screenshots
+
 https://snipboard.io/EPoFkR.jpg
+
 https://snipboard.io/IptJwh.jpg
+
 https://snipboard.io/GNTMK3.jpg
+
 https://snipboard.io/imEq0g.jpg
 
