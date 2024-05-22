@@ -37,7 +37,7 @@ JWT Bearer Authentication
 ASP.NET Core Middleware
 ASP.NET Identity
 
-#Screenshots
+# Screenshots
 
 https://snipboard.io/EPoFkR.jpg
 
