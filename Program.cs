@@ -40,7 +40,14 @@ builder.Services.AddIdentityCore<MyUser>()
     .AddApiEndpoints();
 
 builder.Services.AddServices();
-
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("CorsPolicy",
+        builder => builder
+            .AllowAnyOrigin()   // Change to specific origin in production
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
 
 builder.Services.AddAuthentication(IdentityConstants.BearerScheme).AddBearerToken(IdentityConstants.BearerScheme);
 builder.Services.AddAuthorization();
@@ -60,6 +67,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseMiddleware<BlockRegisterMiddleware>();
 app.UseRouting();
+app.UseCors("CorsPolicy");
 app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
