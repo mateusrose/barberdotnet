@@ -16,11 +16,17 @@ public class WeekController
     {
         _weekService = weekService;
     }
-
     [HttpGet("{year}/{month}/{week}")]
-    public async Task<ActionResult<List<DayDTO>>> GetWeekInfo(int year, int month, int week, int barber)
+    public async Task<ActionResult<List<DayDTO>>> GetWeekInfo(int year, int month, int week)
     {
-        var list = await _weekService.GetWeekInfo(year, month, week, barber);
+        var list = await _weekService.GetWeekInfo(year, month, week);
+        return list;
+    }
+    
+    [HttpGet("{year}/{month}/{week}/{barber}")]
+    public async Task<ActionResult<List<DayDTO>>> GetWeekInfoBarber(int year, int month, int week, int barber)
+    {
+        var list = await _weekService.GetWeekInfoBarber(year, month, week, barber);
         return list;
     }
 }

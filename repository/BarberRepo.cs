@@ -2,8 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using barberdotnet.model.DTOs;
 using barberdotnet.model.entities;
 using barberdotnet.model.persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace barberdotnet.repository
 {
@@ -20,6 +22,13 @@ namespace barberdotnet.repository
             return Task.FromResult(_context.barbers.ToList());
         }
 
+        public Task<Barber> GetBarberById(int id)
+        {
+            var barber = _context.barbers
+                .FirstOrDefaultAsync(b => b.Id == id);
+
+            return barber;
+        }
        
     }
 }

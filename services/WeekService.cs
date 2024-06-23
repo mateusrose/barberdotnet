@@ -21,13 +21,28 @@ public class WeekService
         _dayConverter = dayConverter;
         _repository = repository;
     }
-    public async Task<ActionResult<List<DayDTO>>> GetWeekInfo(int year, int month, int week, int barber)
+    
+    public async Task<ActionResult<List<DayDTO>>> GetWeekInfo(int year, int month, int week)
     {
-        var weekList = await _repository.GetAllFromWeekBarber(year, month, week, barber);
+        var weekList = await _repository.GetAllFromWeekBarber(year, month, week);
         var list = new List<DayDTO>();
         foreach (var day in weekList)
         {
             var barbers = await _dayService.GetByDate(year, month, (int) day.MonthDay);
+            list.Add(_dayConverter.ToDTO(day,barbers));
+        }
+        
+        return list;
+    }  
+    
+    
+    public async Task<ActionResult<List<DayDTO>>> GetWeekInfoBarber(int year, int month, int week, int barber)
+    {
+        var weekList = await _repository.GetAllFromWeekBarber(year, month, week);
+        var list = new List<DayDTO>();
+        foreach (var day in weekList)
+        {
+            var barbers = await _dayService.GetByDateBarber(year, month, (int) day.MonthDay,barber);
             list.Add(_dayConverter.ToDTO(day,barbers));
         }
          

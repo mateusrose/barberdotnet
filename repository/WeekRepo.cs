@@ -15,7 +15,7 @@ public class WeekRepo
         _context = context;
     }
     
-    public async Task<List<Day>> GetAllFromWeekBarber(int year, int month, int week, int barber)
+    public async Task<List<Day>> GetAllFromWeekBarber(int year, int month, int week)
     {
         
         var days = await _context.days

@@ -58,6 +58,28 @@ namespace barberdotnet.services
             }
             return BarberDTOList;
         }   
+        
+        public async Task<List<BarberDTO>> GetByDateBarber(int year, int month, int day, int barber)
+        {
+            var barberObj = await _barberRepo.GetBarberById(barber); 
+            var barberDTOList = new List<BarberDTO>(); 
+            
+                BarberDTO dto = new BarberDTO();
+                dto.Id = barberObj.Id;
+                dto.Name = barberObj.Name;
+
+                List<Timeslot> timeslots = await _timeslotRepo.GetTimeslotsByDayBarber(year, month, day, barber);
+                List<TimeslotDTOshort> list = _listConverter.ToDTO(timeslots);
+                
+                for(int j = 0; j < list.Count; j++)
+                {
+                    TimeslotDTOshort ts = list[j];
+                    dto.Timeslots.Add(ts);
+                }
+                barberDTOList.Add(dto);
+                return barberDTOList;
+        }   
+        
             public Task<Day> GetById(int id)
         {
             throw new NotImplementedException();
