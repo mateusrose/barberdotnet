@@ -20,9 +20,9 @@ namespace barberdotnet.model.persistence
 
         public void Initialize()
         {
-           // DBInit();
-            //AddBarbers(2);
-            //AddYears(1);
+          //  DBInit();
+           // AddBarbers(2);
+           // AddYears(3);
             //in case of delete migration dotnet ef migrations add InitialCreate --context AuthContext
             // dotnet ef database update --context AuthContext
 
@@ -68,11 +68,18 @@ namespace barberdotnet.model.persistence
             int year = month.Year.YearNumber;
             int monthNumber = (int)month.MonthNumber;
             int daysInMonth = DateTime.DaysInMonth(year, monthNumber);
-
+            var weekNumber = 1;
             for (int i = 1; i <= daysInMonth; i++)
             {
+                
+                DateTime date = new DateTime(year, monthNumber, i);
                 var day = new Day();
-                day.setup(i);
+                int dayOfWeek = (int)date.DayOfWeek;
+                if (dayOfWeek == 1 && i != 1)
+                {
+                    weekNumber++;
+                } 
+                day.Setup(i,dayOfWeek,weekNumber);
                 day.Month = month;
                 month.Days.Add(day);
                 AssignBarbers(day);

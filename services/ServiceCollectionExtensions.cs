@@ -20,17 +20,21 @@ public static class ServiceCollectionExtensions
         var dayServiceImplementation = typeof(DayService);
 
         if (serviceType.IsAssignableFrom(serviceImplementationType))
-        {
-            services.AddScoped(serviceType, serviceImplementationType);
-            services.AddScoped<TStoDTO>();
-            services.AddScoped<TimeslotRepo>();
-            services.AddScoped<TSReservation>();
-            services.AddScoped<DayRepo>();
+        { 
             services.AddScoped(dayService, dayServiceImplementation);
+            services.AddScoped(serviceType, serviceImplementationType);
+            services.AddScoped<WeekService>();
+            
+            services.AddScoped<TStoDTO>();    
+            services.AddScoped<DayToDTO>();
             services.AddScoped<TSshortToDTO>();
             services.AddScoped<TSListToDTO>();
-            services.AddScoped<BarberRepo>();
+            services.AddScoped<TSReservation>();
             
+            services.AddScoped<BarberRepo>();
+            services.AddScoped<TimeslotRepo>();
+            services.AddScoped<DayRepo>();
+            services.AddScoped<WeekRepo>();
             
 
         }

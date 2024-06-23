@@ -26,7 +26,8 @@ namespace barberdotnet.model.entities
             int minutes = increment % 60;
 
             this.Time = baseTime + hours * 100 + minutes;
-            if (Day.WeekDay == 7)
+            if (Day.CanWork == false)
+                //after setup, use !Day.canWork and it will be working
             {
                 this.IsWorkHour = false;
             }

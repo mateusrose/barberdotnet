@@ -18,13 +18,14 @@ namespace barberdotnet.controllers.middleware
 
         public async Task InvokeAsync(HttpContext context)
         {
+            /*
             if (context.Request.Path.StartsWithSegments("/register", StringComparison.OrdinalIgnoreCase))
             {
                 context.Response.StatusCode = StatusCodes.Status403Forbidden;
                 await context.Response.WriteAsync("Barber is full.");
                 return;
             }
-
+*/
             await _next(context);
         }
     }
