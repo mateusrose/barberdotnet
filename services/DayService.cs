@@ -18,14 +18,16 @@ namespace barberdotnet.services
         private readonly BarberRepo _barberRepo;
         private readonly TSListToDTO _listConverter;
         private readonly ILogger<DayService> _logger;
+        private readonly DayToDTO? _dayConverter;
         
-        public DayService(ILogger<DayService> logger ,DayRepo dayRepo, TimeslotRepo timeslotRepo, BarberRepo barberRepo, TSListToDTO listConverter)
+        public DayService(ILogger<DayService> logger ,DayRepo dayRepo, TimeslotRepo timeslotRepo, BarberRepo barberRepo, TSListToDTO listConverter, DayToDTO dayConverter)
         {
             _logger = logger;
             _barberRepo = barberRepo;
             _dayRepo = dayRepo;
             _timeslotRepo = timeslotRepo;
             _listConverter = listConverter;
+            _dayConverter = dayConverter;
         }
         
         //GET List of All BarbersDTO that contains Timeslots for the current day
@@ -78,8 +80,15 @@ namespace barberdotnet.services
                 }
                 barberDTOList.Add(dto);
                 return barberDTOList;
-        }   
-        
+        }
+
+        public async Task<DayDTO> GetDayByDateBasic(int year, int month, int day)
+        {
+            Day dayObj = await _dayRepo.GetByExactDay(year, month, day);
+            var dayDto = _dayConverter.ToDTO(dayObj, []);
+            return dayDto;
+        }
+         
             public Task<Day> GetById(int id)
         {
             throw new NotImplementedException();

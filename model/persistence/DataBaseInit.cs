@@ -20,9 +20,9 @@ namespace barberdotnet.model.persistence
 
         public void Initialize()
         {
-          //  DBInit();
+         // DBInit();
            // AddBarbers(2);
-           // AddYears(3);
+            //AddYears(3);
             //in case of delete migration dotnet ef migrations add InitialCreate --context AuthContext
             // dotnet ef database update --context AuthContext
 

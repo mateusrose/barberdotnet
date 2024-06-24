@@ -42,7 +42,7 @@ namespace barberdotnet.controllers
             return timeslot;
         }
 
-        [HttpPut("{year}/{month}/{day}/{hour}/{barber}/{client}")]
+        [HttpGet("{year}/{month}/{day}/{hour}/{barber}/{client}")]
         public async Task<ActionResult<TimeslotDTO>> SetReservation(int year, int month, int day, int hour, int barber, string client)
         {
             var timeslot = await _timeslotService.SetReservation(year, month, day, hour, barber, client);
@@ -50,7 +50,7 @@ namespace barberdotnet.controllers
             return timeslot;
         }
         
-         [HttpPut("{year}/{month}/{day}/{hour}/{barber}")]
+         [HttpGet("{year}/{month}/{day}/{hour}/{barber}/clear")]
         public async Task<ActionResult<TimeslotDTO>> SetReset(int year, int month, int day, int hour, int barber)
         {
             string client = "";

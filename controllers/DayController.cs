@@ -37,5 +37,11 @@ namespace barberdotnet.controllers
 
             return barberList;
         }
+        [HttpGet("{year}/{month}/{day}/info")]
+        public async Task<DayDTO> GetDayByDateBasic(int year, int month, int day)
+        {
+            var dayDto = await _dayService.GetDayByDateBasic(year, month, day);
+            return dayDto;
+        }
     }
 }

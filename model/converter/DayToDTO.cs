@@ -14,7 +14,7 @@ public class DayToDTO
         dayDTO.Year = day.Month.Year.YearNumber;
         dayDTO.WeekDayName = day.WeekDayName;
         dayDTO.Barber = barbers;
-        
+        dayDTO.WeekNumber = (int) day.WeekNumber; 
         return dayDTO;
     }
 }

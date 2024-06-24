@@ -11,6 +11,7 @@ namespace barberdotnet.model.DTOs
         public int Day { get; set; }
         public int Month { get; set; }
         public string MonthName { get; set; }
+        public int WeekNumber { get; set; }
         
         public string WeekDayName { get; set; }
         public int Year { get; set; }
